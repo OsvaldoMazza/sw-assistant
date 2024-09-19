@@ -1,0 +1,21 @@
+# .gitignore
+
+# Ignore files
+.env
+.eslintrc.js
+voice_temp.mp3
+
+# Ignore folders
+venv/
+.venv/
+__pycache__/
+__pycache__
+.vscode/
+.vscode
+temp/
+
+
+# Ignore compilations
+__pycache__/
+__pycache__
+*.py[cod]

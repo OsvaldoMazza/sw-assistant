@@ -1,0 +1,39 @@
+import os
+from gtts import gTTS
+import config
+import pygame
+
+from management.utils import get_lang_value
+
+mp3_name = config.default_name_mp3
+mp3_velocity= config.default_velocity_mp3
+
+def text_to_mp3(text, file_name):
+    voice_language = get_lang_value('google_recognition_voice')
+    tts = gTTS(text, tld = voice_language[0], lang= voice_language[1])
+    tts.save(file_name + ".mp3")
+
+def play_mp3(file_name, velocity):
+    os.system(f"ffplay -v 0 -nodisp -af 'atempo={velocity}' -autoexit {file_name}.mp3")
+
+def play_mp3_pygame(file_name, velocity):
+    pygame.mixer.init()
+    pygame.mixer.music.load(f"{file_name}.mp3")
+    pygame.mixer.music.play(loops=0)
+    while pygame.mixer.music.get_busy():
+        pygame.time.Clock().tick(0) 
+    pygame.quit()
+
+def text_to_voice(text):
+    text_to_mp3(text, mp3_name)
+    if (config.is_windows):
+        play_mp3_pygame(mp3_name, mp3_velocity)
+    else:
+        play_mp3(mp3_name, mp3_velocity)
+
+    delete_mp3(mp3_name)
+
+def delete_mp3(filename):
+    file_path =  filename.replace("/", "\\") + '.mp3'
+    if os.path.exists(file_path):
+        os.remove(file_path)

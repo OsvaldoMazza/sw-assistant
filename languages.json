@@ -1,0 +1,39 @@
+{
+    "spanish": {
+        "assistant_behavior": "Sos un asistente que da respuestas cortas",
+        "ready": "Te escucho...",
+        "greetings": [
+            "hola",
+            "holas",
+            "che",
+            "hey"
+        ],
+        "close": [
+            "quiero que te apagues",
+            "terminar asistente",
+            "abortar asistente"
+        ],
+        "not_understand": "no entendí, ¿puedes volver a preguntarlo?",
+        "goodbye": "me voy, ¡adiós!",
+        "google_recognition_listen": "es-ES",
+        "google_recognition_voice": ["es", "es"]
+    },
+    "english": {
+        "assistant_behavior": "You are an assistant who gives short answers",
+        "ready": "I listen to you...",
+        "greetings": [
+            "hello",
+            "hi",
+            "hey"
+        ],
+        "close": [
+            "I want you to switch off",
+            "terminate assistant",
+            "abort wizard"
+        ],
+        "not_understand": "I didn't understand, can you ask again?",
+        "goodbye": "I'm leaving, goodbye!",
+        "google_recognition_listen": "us",
+        "google_recognition_voice": ["us", "us"]
+    }
+}
