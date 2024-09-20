@@ -4,15 +4,18 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # System
-api_key = os.getenv("apikey")
+connection_type = "azure" # azure | openai
 is_windows = os.getenv("windows", True)
 
 # Language
 language = "spanish"  # Select from languages.json
 
 # OpenaAI
-chat_model = "gpt-3.5-turbo"
+chat_model = "osvaldo-gtp35" #"gpt-3.5-turbo"
 enable_tools = True
+
+#Azure
+azure_api_version = "2024-02-01"
 
 # Hardware
 mic_number_position = 0

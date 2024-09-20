@@ -1,18 +1,16 @@
 
 import json
 import os
-from openai import OpenAI
+from openai import OpenAI, AzureOpenAI
 from tenacity import retry, wait_random_exponential, stop_after_attempt
-from tools.google_weather import get_weather
 
+from tools.google_weather import get_weather
 import config
 from management.utils import get_tools, get_lang_value
 
 class Openai_handler:   
     def __init__(self, behavior= get_lang_value('assistant_behavior')):
-        self.client = OpenAI(
-             api_key = os.getenv("apikey"),
-        )
+        self.client = get_client()
         self.system_behavior = behavior
 
     @retry(wait=wait_random_exponential(multiplier=1, max=40), stop=stop_after_attempt(3))
@@ -54,3 +52,16 @@ class Openai_handler:
                     return get_weather(arguments['location'], arguments['num_days'])
         
         return get_lang_value('not_understand')
+
+def get_client():
+    if config.connection_type == 'openai':
+        return  OpenAI(api_key = os.getenv("openai_apikey"),)
+    
+    if config.connection_type == 'azure':
+        return AzureOpenAI(
+                azure_endpoint = os.getenv("azure_endpoint"), 
+                api_key= os.getenv("azure_apikey"),  
+                api_version= config.azure_api_version
+            )
+    
+    return None
