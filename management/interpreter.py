@@ -11,13 +11,14 @@ def interpreter(text):
     text = remove_greetings(text.lower())
 
     if any(text.startswith(phrase) for phrase in wakeup): 
-        ready_message(text)
+        remove_wakup(text)
         return interpreting
     elif text in get_lang_value('close'): close_program()
     else: do_nothing()
 
     interpreting.allowed_ia = False
     interpreting.quest_inside = False
+    interpreting.text = text
     
     return interpreting
    
@@ -36,7 +37,7 @@ def remove_greetings(text):
     
     return text
 
-def ready_message(text):
+def remove_wakup(text):
     for phrase in wakeup:
         if text.startswith(phrase) and len(text[len(phrase):].strip()) > 10:
             interpreting.text = text[len(phrase):].strip()

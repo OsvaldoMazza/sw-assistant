@@ -24,6 +24,6 @@ while True:
 
     if (check_last_time_question(time_until_question)):
         print("+-- Enter AI Function ...")
-        response = openai_handler.send_question(text)
+        response = openai_handler.send_question(interpreting.text)
         text_to_voice(response)
         time_until_question = datetime.now()

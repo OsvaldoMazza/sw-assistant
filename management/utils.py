@@ -20,3 +20,7 @@ def get_lang_value(phrase):
     
     return phrases[config.language][phrase]
     
+def get_assistant_behavior():
+    with open('assistant_behavior.txt', 'r', encoding='utf-8') as file:
+        content = file.read()
+    return content

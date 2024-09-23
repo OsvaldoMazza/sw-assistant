@@ -1,8 +1,9 @@
 import os
 from gtts import gTTS
-import config
+from pydub import AudioSegment
 import pygame
 
+import config
 from management.utils import get_lang_value
 
 mp3_name = config.default_name_mp3

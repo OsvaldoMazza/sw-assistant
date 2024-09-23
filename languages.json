@@ -1,6 +1,5 @@
 {
     "spanish": {
-        "assistant_behavior": "Sos un asistente que da respuestas cortas",
         "ready": "Te escucho...",
         "greetings": [
             "hola",
@@ -19,7 +18,6 @@
         "google_recognition_voice": ["es", "es"]
     },
     "english": {
-        "assistant_behavior": "You are an assistant who gives short answers",
         "ready": "I listen to you...",
         "greetings": [
             "hello",
