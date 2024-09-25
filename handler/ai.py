@@ -6,6 +6,7 @@ from tenacity import retry, wait_random_exponential, stop_after_attempt
 import tiktoken
 
 from tools.google_weather import get_weather
+from tools.google_calendar import get_events, set_events
 import config
 from management.utils import get_assistant_behavior, get_tools, get_lang_value
 
@@ -56,20 +57,31 @@ class Openai_handler:
     
     def analyze_result(self, ai_response):
         message = ai_response.choices[0].message
-        if message.content != None:
+
+        if message.content:
             assistant_message = message.content.strip()
             self.chat_history.append({"role": "assistant", "content": assistant_message})
-            
             return assistant_message
-        elif hasattr(message, 'tool_calls'):
+
+        if hasattr(message, 'tool_calls'):
             for call in message.tool_calls:
                 arguments = json.loads(call.function.arguments)
-                if (call.function.name == 'get_current_weather'):
-                  return get_weather(arguments['location'])
-                if (call.function.name == 'get_n_day_weather_forecast'):
-                    return get_weather(arguments['location'], arguments['num_days'])
-        
-        return get_lang_value('not_understand')
+                func_name = call.function.name
+
+                if func_name == 'get_current_weather':
+                    return get_weather(arguments)
+
+                if func_name == 'get_n_day_weather_forecast':
+                    return get_weather(arguments)
+
+                if func_name == 'get_calendar_events':
+                    result = get_events(arguments)
+                    return self.send_question(json.dumps(result))
+                
+                if func_name == 'set_calendar_event':
+                    return set_events(arguments)
+                
+                return get_lang_value('not_understand')
 
 def get_client():
     if config.connection_type == 'openai':

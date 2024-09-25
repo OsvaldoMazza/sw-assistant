@@ -26,7 +26,8 @@ mic_number_position = 0
 wakeup = [
             "southie",
             "ramona",
-            "shazam"
+            "shazam",
+            "ramón"
         ]
 attention_time = 30
 phrase_time_limit = 5 

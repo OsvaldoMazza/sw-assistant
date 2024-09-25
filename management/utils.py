@@ -23,4 +23,6 @@ def get_lang_value(phrase):
 def get_assistant_behavior():
     with open('assistant_behavior.txt', 'r', encoding='utf-8') as file:
         content = file.read()
+    today = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    content += f"\n La fecha y la hora del día de hoy es {today}. Utilizarlo al momento de crear eventos de calendario"
     return content
