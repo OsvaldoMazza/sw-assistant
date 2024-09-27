@@ -15,6 +15,9 @@ class Listen:
                 self.recognizer.adjust_for_ambient_noise(source)
                 self.audio = self.recognizer.listen(source, phrase_time_limit=config.phrase_time_limit)
 
+                with open(config.default_recognize_wav, "wb") as f:
+                    f.write(self.audio.get_wav_data())
+
                 return self.recognizer.recognize_google(self.audio, language= get_lang_value('google_recognition_listen'))
             except:
                 return ""

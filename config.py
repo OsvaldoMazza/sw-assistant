@@ -32,7 +32,8 @@ attention_time = 30
 phrase_time_limit = 5 
 
 # Voice Assistant
-default_name_mp3 = "temp/voice_temp"
+default_name_mp3 = "temp/voice_temp.mp3"
+default_recognize_wav = "temp/recognize.wav"
 default_velocity_mp3 = 1.5
 
 
