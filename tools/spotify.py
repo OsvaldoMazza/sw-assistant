@@ -34,7 +34,7 @@ def search_and_play_song(song_name):
     else:
         print("No se encontró la canción.")
 
-def stop_playback():
+def stop_play():
     # Obtener el dispositivo actual
     devices = sp.devices()
     if devices['devices']:

@@ -2,7 +2,9 @@
 import requests
 from bs4 import BeautifulSoup
 
-def get_weather(city, days=None):
+def get_weather(arguments):
+    city = arguments.get('location')
+    days = arguments.get('num_days')
     url = "https://www.google.com/search?q=" + "weather" + city
     if days != None:
         url += f" in {days} days"

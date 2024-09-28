@@ -4,6 +4,7 @@
 .env
 .eslintrc.js
 voice_temp.mp3
+token.pickle
 
 # Ignore folders
 venv/

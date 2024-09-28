@@ -50,6 +50,64 @@
     {
         "type": "function",
         "function": {
+            "name": "get_calendar_events",
+            "description": "Get the events of calendar",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "number_events": {
+                        "type": "integer",
+                        "description": "the number of upcoming events. e.g. 5"
+                    },
+                    "days": {
+                        "type": "integer",
+                        "description": "The days when start to get the events of calendar. e.g. 7"
+                    }
+                },
+                "required": []
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "set_calendar_event",
+            "description": "Set the events of calendar",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "summary": {
+                        "type": "string",
+                        "description": "the title or summary of the event. e.g. 'dentist'"
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "The place of the event. e.g. Caballito"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "More details of the event"
+                    },
+                    "start_datetime": {
+                        "type": "string",
+                        "description": "The start datetime of the event in UTC format, e.g. 2024-09-30T09:00:00"
+                    },
+                    "end_datetime": {
+                        "type": "string",
+                        "description": "The end datetime of the event in UTC format. If it None, then set 1 hour after the start datetime, e.g. 2024-09-3010:00:00"
+                    },
+                    "reminder_minutes": {
+                        "type": "integer",
+                        "description": "A reminder of the event. By default set 60, e.g. 60"
+                    }
+                },
+                "required": ["summary", "start_datetime", "end_datetime"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
             "name": "play_song_spotify",
             "description": "play a song in spotify",
             "parameters": {
@@ -72,11 +130,12 @@
         "type": "function",
         "function": {
             "name": "stop_song_spotify",
-            "description": "stop the song of spotify that is playing",
+            "description": "stop a song playing in spotify",
             "parameters": {
                 "type": "object",
                 "properties": {
-                }
+                    },
+                "required": []
             }
         }
     }
