@@ -46,5 +46,38 @@
                 "required": ["location", "format", "num_days"]
             }
         }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "play_song_spotify",
+            "description": "play a song in spotify",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "song_name": {
+                        "type": "string",
+                        "description": "The name of the song. E.g. 'purple rain'"
+                    },
+                    "artist_name": {
+                        "type": "string",
+                        "description": "The name of the artist of the song. E.g. 'Prince'"
+                    }
+                },
+                "required": ["song", "artist"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "stop_song_spotify",
+            "description": "stop the song of spotify that is playing",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                }
+            }
+        }
     }
 ]
