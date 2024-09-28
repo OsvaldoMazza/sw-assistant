@@ -1,6 +1,5 @@
 import os
 from gtts import gTTS
-from pydub import AudioSegment
 import pygame
 
 import config
