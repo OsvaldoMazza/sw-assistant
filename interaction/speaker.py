@@ -1,9 +1,9 @@
 import os
 from gtts import gTTS
-import pygame
 
 import config
 from management.utils import get_lang_value
+from management.utils import play_mp3_pygame, play_mp3_ffplay
 
 mp3_name = config.default_name_mp3
 mp3_velocity= config.default_velocity_mp3
@@ -13,23 +13,12 @@ def text_to_mp3(text, file_name):
     tts = gTTS(text, tld = voice_language[0], lang= voice_language[1])
     tts.save(file_name)
 
-def play_mp3(file_name, velocity):
-    os.system(f"ffplay -v 0 -nodisp -af 'atempo={velocity}' -autoexit {file_name}")
-
-def play_mp3_pygame(file_name, velocity):
-    pygame.mixer.init()
-    pygame.mixer.music.load(file_name)
-    pygame.mixer.music.play(loops=0)
-    while pygame.mixer.music.get_busy():
-        pygame.time.Clock().tick(0) 
-    pygame.quit()
-
 def text_to_voice(text):
     text_to_mp3(text, mp3_name)
     if (config.is_windows):
-        play_mp3_pygame(mp3_name, mp3_velocity)
+        play_mp3_pygame(mp3_name)
     else:
-        play_mp3(mp3_name, mp3_velocity)
+        play_mp3_ffplay(mp3_name, mp3_velocity)
 
     delete_mp3(mp3_name)
 

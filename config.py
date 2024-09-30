@@ -6,6 +6,7 @@ load_dotenv()
 # System
 connection_type = "openai" # azure | openai
 is_windows = os.getenv("windows", True)
+system_sound = "assets/system.mp3"
 
 # Language
 language = "spanish"  # Select from languages.json

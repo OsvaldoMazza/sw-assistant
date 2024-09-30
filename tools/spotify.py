@@ -9,13 +9,10 @@ SPOTIPY_REDIRECT_URI = os.getenv('spotify_redirect_url')  # La URL de redirecci�
 
 # Crear autenticación usando Spotipy con el ámbito necesario para controlar la reproducción
 scope = "user-read-playback-state,user-modify-playback-state"
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
-                                               client_secret=SPOTIPY_CLIENT_SECRET,
-                                               redirect_uri=SPOTIPY_REDIRECT_URI,
-                                               scope=scope))
 
 def search_and_play_song(song_name):
     # Buscar la canción
+    sp = get_credencial()
     result = sp.search(q=song_name, type='track', limit=1)
     if result['tracks']['items']:
         track = result['tracks']['items'][0]
@@ -41,8 +38,14 @@ def stop_play():
         device_id = devices['devices'][0]['id']
 
         # Pausar la reproducción
+        sp = get_credencial()
         sp.pause_playback(device_id=device_id)
         print("La reproducción ha sido pausada.")
     else:
         print("No se encontró un dispositivo activo para pausar la reproducción.")
 
+def get_credencial():
+    return  spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
+                                               client_secret=SPOTIPY_CLIENT_SECRET,
+                                               redirect_uri=SPOTIPY_REDIRECT_URI,
+                                               scope=scope))
