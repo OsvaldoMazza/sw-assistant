@@ -1,5 +1,8 @@
 from datetime import datetime, timedelta
 import json
+import os
+
+import pygame
 import config
 
 def check_last_time_question(time_until_question):
@@ -26,3 +29,14 @@ def get_assistant_behavior():
     today = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     content += f"\n La fecha y la hora del día de hoy es {today}. Utilizarlo al momento de crear eventos de calendario"
     return content
+
+def play_mp3_ffplay(file_name, velocity):
+    os.system(f"ffplay -v 0 -nodisp -af 'atempo={velocity}' -autoexit {file_name}")
+
+def play_mp3_pygame(file_name):
+    pygame.mixer.init()
+    pygame.mixer.music.load(file_name)
+    pygame.mixer.music.play(loops=0)
+    while pygame.mixer.music.get_busy():
+        pygame.time.Clock().tick(0) 
+    pygame.quit()
