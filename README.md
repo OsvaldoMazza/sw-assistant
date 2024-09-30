@@ -15,4 +15,4 @@ google_auth_provider_x509_cert_url="https://www.googleapis.com/oauth2/v1/certs"
 google_redirect_uris=["http://localhost"]
 
 ## Install libraries
-pip freeze > requirements.txt
+pip install -r requirements.txt
