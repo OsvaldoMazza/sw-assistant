@@ -13,7 +13,7 @@
             "abortar asistente"
         ],
         "not_understand": "no entendí, ¿puedes volver a preguntarlo?",
-        "goodbye": "me voy, ¡adiós!",
+        "goodbye": "me apago. Chau!",
         "google_recognition_listen": "es-ES",
         "google_recognition_voice": ["es", "es"]
     },
