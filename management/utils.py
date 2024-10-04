@@ -40,3 +40,22 @@ def play_mp3_pygame(file_name):
     while pygame.mixer.music.get_busy():
         pygame.time.Clock().tick(0) 
     pygame.quit()
+
+def set_local_value(key, value, filename='values.json'):
+    data = {}
+
+    if os.path.exists(filename):
+        with open(filename, 'r') as f:
+            data = json.load(f)
+    data[key] = value
+
+    with open(filename, 'w') as f:
+        json.dump(data, f, indent=4)
+
+def get_local_value(key, filename='values.json'):
+    if os.path.exists(filename):
+        with open(filename, 'r') as f:
+            data = json.load(f)
+
+            return data.get(key, None)
+    return None
