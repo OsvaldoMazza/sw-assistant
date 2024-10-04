@@ -57,5 +57,4 @@ def switch_device():
     device = Device(_device_id, device_address, _device_local_key)
 
     switch_state(get_device(device))
-
-switch_device()
+    

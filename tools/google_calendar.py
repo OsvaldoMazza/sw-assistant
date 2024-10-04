@@ -16,29 +16,33 @@ gmt = '-03:00'
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
 def get_calendar_service():
-    utils_google.check_exist_credentials()
-    creds = None
-    # El archivo token.pickle almacena las credenciales de acceso del usuario.
-    # Si el archivo ya existe, las carga para evitar una nueva autenticación.
-    if os.path.exists('./temp/token.pickle'):
-        with open('./temp/token.pickle', 'rb') as token:
-            creds = pickle.load(token)
-    
-    # Si no hay credenciales válidas, el usuario debe iniciar sesión.
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                './temp/client_secrets.json', SCOPES)
-            creds = flow.run_local_server(port=0)
+    try:
+        utils_google.check_exist_credentials()
+        creds = None
+        # El archivo token.pickle almacena las credenciales de acceso del usuario.
+        # Si el archivo ya existe, las carga para evitar una nueva autenticación.
+        if os.path.exists('./temp/token.pickle'):
+            with open('./temp/token.pickle', 'rb') as token:
+                creds = pickle.load(token)
         
-        # Guarda las credenciales para futuras ejecuciones.
-        with open('./temp/token.pickle', 'wb') as token:
-            pickle.dump(creds, token)
+        # Si no hay credenciales válidas, el usuario debe iniciar sesión.
+        if not creds or not creds.valid:
+            if creds and creds.expired and creds.refresh_token:
+                flow = InstalledAppFlow.from_client_secrets_file(
+                    './temp/client_secrets.json', SCOPES)
+                creds = flow.run_local_server(port=0)
+            
+            # Guarda las credenciales para futuras ejecuciones.
+            with open('./temp/token.pickle', 'wb') as token:
+                pickle.dump(creds, token)
 
-    # Llama a la API de Google Calendar
-    return build('calendar', 'v3', credentials=creds)
+        # Llama a la API de Google Calendar
+        return build('calendar', 'v3', credentials=creds)
+    except Exception as e:
+        print(f"### ERROR ### Get_calendar_service: {e}")
+        
+        return None
+
 
 def get_events(arguments):
     days = arguments.get('days')
@@ -52,9 +56,13 @@ def get_events(arguments):
         number_events = default_max_events
 
     service = get_calendar_service()
+
+    if (service == None):
+        return None
+    
     events_result = service.events().list(calendarId='primary', timeMin=date,
-                                          maxResults=number_events, singleEvents=True,
-                                          orderBy='startTime').execute()
+                                        maxResults=number_events, singleEvents=True,
+                                        orderBy='startTime').execute()
     events = events_result.get('items', [])
 
     events_with_days = []
@@ -114,6 +122,3 @@ def set_events(arguments):
         
         return "No pude agendar el evento"
     
-
-    
-   

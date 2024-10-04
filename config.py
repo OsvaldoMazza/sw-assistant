@@ -6,6 +6,7 @@ load_dotenv()
 # System
 connection_type = "openai" # azure | openai
 is_windows = os.getenv("windows", True)
+wake_up_every_place = True  # True | False  fwake up ia in any place of the phrase
 system_sound = "assets/system.mp3"
 
 # Language
