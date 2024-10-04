@@ -77,6 +77,8 @@ class Openai_handler:
 
                 if func_name == 'get_calendar_events':
                     result = get_events(arguments)
+                    if result == None:
+                        return "No se pudo realizar la tarea"
                     return self.send_question(json.dumps(result))
                 
                 if func_name == 'set_calendar_event':

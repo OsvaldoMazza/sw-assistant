@@ -138,5 +138,18 @@
                 "required": []
             }
         }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "stop_song_spotify",
+            "description": "stop a song playing in spotify",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    },
+                "required": []
+            }
+        }
     }
 ]

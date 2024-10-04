@@ -12,6 +12,12 @@
             "terminar asistente",
             "abortar asistente"
         ],
+        "light_house": [
+            "la luz",
+            "la luuz",
+            "la luuuz",
+            "la lus"
+        ],
         "not_understand": "no entendí, ¿puedes volver a preguntarlo?",
         "goodbye": "me apago. Chau!",
         "google_recognition_listen": "es-ES",
@@ -28,6 +34,9 @@
             "I want you to switch off",
             "terminate assistant",
             "abort wizard"
+        ],
+        "light_house": [
+            "the light"
         ],
         "not_understand": "I didn't understand, can you ask again?",
         "goodbye": "I'm leaving, goodbye!",

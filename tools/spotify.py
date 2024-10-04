@@ -13,6 +13,10 @@ scope = "user-read-playback-state,user-modify-playback-state"
 def search_and_play_song(song_name):
     # Buscar la canción
     sp = get_credencial()
+
+    if (sp == None):
+        return "Falló las credenciales de SPOTIFY"
+    
     result = sp.search(q=song_name, type='track', limit=1)
     if result['tracks']['items']:
         track = result['tracks']['items'][0]
@@ -39,13 +43,25 @@ def stop_play():
 
         # Pausar la reproducción
         sp = get_credencial()
+
+        if (sp == None):
+            return "Falló las credenciales de SPOTIFY"
+    
         sp.pause_playback(device_id=device_id)
         print("La reproducción ha sido pausada.")
     else:
         print("No se encontró un dispositivo activo para pausar la reproducción.")
 
 def get_credencial():
-    return  spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
-                                               client_secret=SPOTIPY_CLIENT_SECRET,
-                                               redirect_uri=SPOTIPY_REDIRECT_URI,
-                                               scope=scope))
+    try: 
+        credencial = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
+                                                client_secret=SPOTIPY_CLIENT_SECRET,
+                                                redirect_uri=SPOTIPY_REDIRECT_URI,
+                                                scope=scope))
+    
+        return credencial
+    
+    except Exception as e:
+        print(f"### ERROR ### get_credencial SPOTIFY: {e}")
+        
+        return None
