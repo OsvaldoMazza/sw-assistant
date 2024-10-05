@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import json
 import os
 
-import pygame
+import arcade
 import config
 
 _is_windows = config.is_windows
@@ -35,20 +35,16 @@ def get_assistant_behavior():
 
 def play_mp3(file_name):
     if (_is_windows):
-        play_mp3_pygame(file_name)
+        play_sound_arcade(file_name)
     else:
         play_mp3_ffplay(file_name, _mp3_velocity)
 
 def play_mp3_ffplay(file_name, velocity):
     os.system(f"ffplay -v 0 -nodisp -af 'atempo={velocity}' -autoexit {file_name}")
 
-def play_mp3_pygame(file_name):
-    pygame.mixer.init()
-    pygame.mixer.music.load(file_name)
-    pygame.mixer.music.play(loops=0)
-    while pygame.mixer.music.get_busy():
-        pygame.time.Clock().tick(0) 
-    pygame.quit()
+def play_sound_arcade(file_name, velocity = None):
+    sound = arcade.load_sound(file_name)
+    arcade.play_sound(sound)
 
 def delete_mp3(filename):
     file_path =  filename.replace("/", "\\")

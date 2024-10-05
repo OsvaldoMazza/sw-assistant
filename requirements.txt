@@ -1,6 +1,8 @@
 annotated-types==0.7.0
 anyio==4.5.0
+arcade==2.6.17
 async-timeout==4.0.3
+attrs==24.2.0
 beautifulsoup4==4.12.3
 bs4==0.0.2
 cachetools==5.5.0
@@ -27,6 +29,7 @@ idna==3.10
 jiter==0.5.0
 oauthlib==3.2.2
 openai==1.46.0
+Pillow==9.3.0
 proto-plus==1.24.0
 protobuf==5.28.2
 pyasn1==0.6.1
@@ -35,10 +38,11 @@ PyAudio==0.2.14
 pycparser==2.22
 pydantic==2.9.2
 pydantic_core==2.23.4
-pydub==0.25.1
-pygame==2.6.0
+pyglet==2.0.dev23
+pymunk==6.4.0
 pyparsing==3.1.4
 python-dotenv==1.0.1
+pytiled-parser==2.2.0
 redis==5.1.0
 regex==2024.9.11
 requests==2.32.3
