@@ -1,7 +1,7 @@
 import config
 from models.interpreting import Interpreting
 from interaction.speaker import text_to_voice
-from management.utils import get_lang_value, play_mp3_pygame
+from management.utils import get_lang_value, play_mp3
 from tools.tuya_home import switch_device
 
 _system_mp3 = config.system_sound
@@ -35,7 +35,7 @@ def do_nothing():
     pass
 
 def light_house():
-    play_mp3_pygame(_system_mp3)
+    play_mp3(_system_mp3)
     switch_device()
 
 def close_program():
