@@ -1,13 +1,16 @@
+from datetime import datetime, timedelta
 import config
 from models.interpreting import Interpreting
 from interaction.speaker import text_to_voice
 from management.utils import get_lang_value, play_mp3
 from tools.tuya_home import switch_device
 
+
+_attention_time = config.attention_time
 _system_mp3 = config.system_sound
-_greetings = get_lang_value('greetings')
 _wakeup = config.wakeup
 _is_wakup_every_place = config.wake_up_every_place
+_greetings = get_lang_value('greetings')
 
 interpreting = Interpreting
 
@@ -46,6 +49,7 @@ def close_program():
 def remove_greetings(text):
     for phrase in _greetings:
         if text.startswith(phrase) and len(text[len(phrase):].strip()) > 10:
+
             return text[len(phrase):].strip()
     
     return text
@@ -66,3 +70,28 @@ def remove_wakup(text):
     text_to_voice(ready_text)
         
     return interpreting
+
+def check_to_ask_ai(text, time_until_question):
+    should_ask_ai = False
+    if not check_stop_talking(text) and check_last_time_question(time_until_question):
+        should_ask_ai = True
+    else:
+        time_until_question = datetime.now() - timedelta(1)
+    
+    return should_ask_ai, time_until_question
+   
+
+def check_last_time_question(time_until_question):
+    if (datetime.now() - time_until_question) < timedelta(seconds= _attention_time):
+        print("+-- Allowed to ask to OpenAi ...")
+        return True
+    
+    return False
+
+def check_stop_talking(text):
+    for phrase in get_lang_value('stop_talking'):
+        if text.lower() == phrase.lower():
+
+            return True
+    
+    return False

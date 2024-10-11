@@ -12,5 +12,5 @@ def text_to_mp3(text, file_name):
 
 def text_to_voice(text):
     text_to_mp3(text, _mp3_name)
-    play_mp3(_mp3_name)
+    play_mp3(_mp3_name, wait = True, fast = True)
     delete_mp3(_mp3_name)

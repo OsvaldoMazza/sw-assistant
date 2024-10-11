@@ -8,6 +8,7 @@ import tiktoken
 from tools.google_weather import get_weather
 from tools.google_calendar import get_events, set_events
 from tools.spotify import search_and_play_song, stop_play
+from tools.youtube import play_youtube, kill_youtube
 import config
 from management.utils import get_assistant_behavior, get_tools, get_lang_value
 
@@ -89,6 +90,12 @@ class Openai_handler:
                 
                 if func_name == 'stop_song_spotify':
                     return stop_play(arguments)
+                
+                if func_name == 'play_youtube':
+                    return play_youtube(arguments)
+                
+                if func_name == 'stop_youtube':
+                    return kill_youtube()
                 
                 return get_lang_value('not_understand')
 

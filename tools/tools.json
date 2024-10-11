@@ -51,7 +51,7 @@
         "type": "function",
         "function": {
             "name": "get_calendar_events",
-            "description": "Get the events of calendar",
+            "description": "Get the events of calendar. Don't say de id event",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -72,7 +72,7 @@
         "type": "function",
         "function": {
             "name": "set_calendar_event",
-            "description": "Set the events of calendar",
+            "description": "Set the events of calendar, or update event.If is an update event, call first the 'get_calendar_events' function to retrieve the 20 next events and find the event to update, then call this function again with the eventIs, start_dateTime, end_dateTime and other existing propierties from the event, and the new values to update",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -99,6 +99,10 @@
                     "reminder_minutes": {
                         "type": "integer",
                         "description": "A reminder of the event. By default set 60, e.g. 60"
+                    },
+                    "eventId": {
+                        "type": "string",
+                        "description": "ID of event to update. Use only to update an existing event."
                     }
                 },
                 "required": ["summary", "start_datetime", "end_datetime"]
@@ -108,46 +112,29 @@
     {
         "type": "function",
         "function": {
-            "name": "play_song_spotify",
-            "description": "play a song in spotify",
+            "name": "play_youtube",
+            "description": "play a song or video in youtube. Create a short query with information",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "song_name": {
+                    "title": {
                         "type": "string",
-                        "description": "The name of the song. E.g. 'purple rain'"
-                    },
-                    "artist_name": {
-                        "type": "string",
-                        "description": "The name of the artist of the song. E.g. 'Prince'"
+                        "description": "The name of son with the author, or the video to play. Example: 'purple rain , Prince'. Example: 'highlights match soccer world cup 2022'"
                     }
                 },
-                "required": ["song", "artist"]
+                "required": ["title"]
             }
         }
     },
     {
         "type": "function",
         "function": {
-            "name": "stop_song_spotify",
-            "description": "stop a song playing in spotify",
+            "name": "stop_youtube",
+            "description": "stop a song or video in youtube.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    },
-                "required": []
-            }
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "stop_song_spotify",
-            "description": "stop a song playing in spotify",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    },
+                },
                 "required": []
             }
         }

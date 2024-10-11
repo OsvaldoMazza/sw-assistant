@@ -5,7 +5,6 @@ load_dotenv()
 
 ## System
 connection_type = "openai" # azure | openai
-is_windows = os.getenv("windows", True)
 wake_up_every_place = True  # True | False  fwake up ia in any place of the phrase
 system_sound = "assets/system.mp3"
 
@@ -38,6 +37,6 @@ phrase_time_limit = 5
 ## Voice Assistant
 default_name_mp3 = "temp/voice_temp.mp3"
 default_recognize_wav = "temp/recognize.wav"
-default_velocity_mp3 = 1.5
+default_velocity_mp3 = 1.6
 
 

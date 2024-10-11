@@ -47,7 +47,7 @@ class Listen:
     def find_microphone(self):
         mic_list = sr.Microphone.list_microphone_names()
         for i, name in enumerate(mic_list):
-            print(f'mic name: {name}')
             if _mic_name in name.lower():
+                print(f'found USB mic: {name}')
                 return i
         return None

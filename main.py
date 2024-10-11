@@ -5,8 +5,8 @@ from datetime import datetime, timedelta
 
 from interaction.listener import Listen
 from interaction.speaker import text_to_voice
-from management.utils import check_last_time_question, play_mp3
-from management.interpreter import interpreter
+from management.utils import play_mp3
+from management.interpreter import interpreter, check_to_ask_ai
 
 _system_mp3 = config.system_sound
 listen = Listen()
@@ -24,7 +24,9 @@ while True:
         text = listen.get_audio_speech()
         time_until_question = datetime.now()
 
-    if (check_last_time_question(time_until_question)):
+    should_ask_ai, time_until_question = check_to_ask_ai(text, time_until_question)
+
+    if (should_ask_ai):
         play_mp3(_system_mp3)
         print("+-- Enter AI Function ...")
         response = openai_handler.send_question(interpreting.text)

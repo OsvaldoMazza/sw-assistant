@@ -18,6 +18,11 @@
             "la luuuz",
             "la lus"
         ],
+        "stop_talking": [
+            "basta",
+            "listo",
+            "ya está"
+        ],
         "not_understand": "no entendí, ¿puedes volver a preguntarlo?",
         "goodbye": "me apago. Chau!",
         "google_recognition_listen": "es-ES",
@@ -37,6 +42,11 @@
         ],
         "light_house": [
             "the light"
+        ],
+        "stop_talking": [
+            "stop",
+            "alright",
+            "enough"
         ],
         "not_understand": "I didn't understand, can you ask again?",
         "goodbye": "I'm leaving, goodbye!",
