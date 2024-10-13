@@ -21,7 +21,7 @@ max_response_tokens = 500
 azure_api_version = "2024-02-01"
 
 ## Hardware
-mic_number_position = ""  # set the microphone position number if you know
+mic_number_position = 0 # set the microphone position number if you know
 mic_name = "usb"          # set the microphone name if you don't know the position
 
 ## Voice Recognition
