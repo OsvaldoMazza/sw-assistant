@@ -10,7 +10,7 @@ _phrase_time_limit = config.phrase_time_limit
 class Listen:
     __slots__ = ("mic", "recognizer", "audio") 
     def __init__(self):
-        self.mic = sr.Microphone(device_index= self.set_microphone())
+        self.mic = sr.Microphone(device_index=self.set_microphone())
         self.recognizer = sr.Recognizer()
 
     def convert_audio_to_text(self):
@@ -38,8 +38,9 @@ class Listen:
         return result
     
     def set_microphone(self):
-        # if _mic_number_position: 
-        #     return _mic_number_position
+        if _mic_number_position: 
+            print(f'+-- Manually mic#: {_mic_number_position} ...')
+            return _mic_number_position
         
         return self.find_microphone()
         
@@ -47,8 +48,8 @@ class Listen:
     def find_microphone(self):
         mic_list = sr.Microphone.list_microphone_names()
         for i, name in enumerate(mic_list):
-            print(f'MIC KEY TO ANALYZE: {name}')
+            print(f'+-- MIC KEY TO ANALYZE: {name} ...')
             if _mic_name in name.lower():
-                print(f'found USB mic: {name}')
+                print(f'+-- Found USB mic: {name} ...')
                 return i
         return None
