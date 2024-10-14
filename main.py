@@ -3,7 +3,8 @@ import config
 import handler.ai as ai
 from datetime import datetime, timedelta
 
-from interaction.listener import Listen
+# from interaction.listener import Listen
+from interaction.vosk_detector import Listen
 from interaction.speaker import text_to_voice
 from management.utils import play_mp3
 from management.interpreter import interpreter, check_to_ask_ai
