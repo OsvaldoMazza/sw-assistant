@@ -29,10 +29,6 @@ wakeup = [
             "ramona",
             "ramón",
             "gallega",
-            "leona",
-            "mai",
-            "kula",
-            "cula"
         ]
 attention_time = 7
 phrase_time_limit = 5 
