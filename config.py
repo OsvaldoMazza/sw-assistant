@@ -31,7 +31,7 @@ wakeup = [
             "shazam",
             "ramón"
         ]
-attention_time = 30
+attention_time = 7
 phrase_time_limit = 5 
 
 ## Voice Assistant
