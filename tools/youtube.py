@@ -19,7 +19,7 @@ def play_youtube(arguments):
         print(f"+-- Opening Linux browser: {_browser} ...")
         url_complete = url + '?autoplay=1'
         print(f'URL COMPLETE: {url_complete}')
-        subprocess_list.append(subprocess.Popen(['xdg-open', url_complete]))
+        subprocess_list.append(subprocess.Popen([_browser, url_complete]))
     else:
         print(f"+-- Opening Windows browser: {_browser} ...")
 
