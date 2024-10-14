@@ -25,4 +25,5 @@ def play_youtube(arguments):
 def kill_youtube():
     print(f"+-- Closing browser: {_browser}...")
     for subproc in subprocess_list:
-        subproc.terminate()
+        if subproc.pid != os.getpid():
+            subproc.terminate()
