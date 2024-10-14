@@ -1,13 +1,13 @@
 import pywhatkit as kit
 import psutil
+import webbrowser
 
 def play_youtube(arguments):
     title = arguments.get('title')
-    kit.playonyt(title)
+    url = kit.playonyt(title,False,False)
+    webbrowser.open(url, new=0)
 
-    print('+-- youtuve video playing ...')
-
-    return "youtube playing."
+    return "reproduciendose video"
 
 def kill_youtube():
     for proc in psutil.process_iter():
