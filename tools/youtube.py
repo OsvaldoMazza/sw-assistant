@@ -17,7 +17,7 @@ def play_youtube(arguments):
     url = kit.playonyt(title,False,_open_video_now)
     if not _open_video_now: 
         print(f"+-- Opening Linux browser: {_browser} ...")
-        url_complete = url_complete + '?autoplay=1'
+        url_complete = url + '?autoplay=1'
         print(f'URL COMPLETE: {url_complete}')
         subprocess_list.append(subprocess.Popen([_browser, url_complete]))
     else:
