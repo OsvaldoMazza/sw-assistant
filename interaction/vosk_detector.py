@@ -15,9 +15,11 @@ class Listen:
         supress_warnings_post(old_stderr, devnull)
 
     def get_audio_speech(self):
+        devnull, old_stderr = supress_warnings_prev()
         self.p = pyaudio.PyAudio()
         stream = self.p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
         stream.start_stream()
+        supress_warnings_post(old_stderr, devnull)
         text = None
         print('+-- Say Something ...')
         while True:
