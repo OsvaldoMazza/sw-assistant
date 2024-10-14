@@ -5,11 +5,12 @@ load_dotenv()
 
 ## System
 connection_type = "openai" # azure | openai
-wake_up_every_place = True  # True | False  fwake up ia in any place of the phrase
+wake_up_every_place = True  # True | False  wake up ia in any place of the phrase
 system_sound = "assets/system.mp3"
+operate_system = "windows" # windows | linux  
 
 ## Language
-language = "spanish"  # Select from languages.json
+language = "spanish"  # Select from languages.jso|
 
 ## OpenaAI
 chat_model = "gpt-3.5-turbo"
