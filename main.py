@@ -12,7 +12,7 @@ from management.interpreter import interpreter, check_to_ask_ai
 _listener_library = config.listener_library
 _system_mp3 = config.system_sound
 
-listen = Listen_vosk if _listener_library == 'vosk' else Listen_sp
+listen = Listen_vosk() if _listener_library == 'vosk' else Listen_sp()
 openai_handler = ai.Openai_handler() 
 time_until_question = datetime.now() - timedelta(1)
 
