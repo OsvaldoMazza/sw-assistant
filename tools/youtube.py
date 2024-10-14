@@ -25,12 +25,13 @@ def play_youtube(arguments):
 
 def kill_youtube():
     print(f"+-- Closing browser: {_browser}...")
-
+    time.sleep(1)
     if _open_video_now:
         for proc in psutil.process_iter():
             if _browser in proc.name().lower():
                 proc.kill()
     else:
+        time.sleep(5)
         for subproc in subprocess_list:
             if subproc.pid != os.getpid():
                 print("+-- closing subprocess")
