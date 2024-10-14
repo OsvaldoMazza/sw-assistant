@@ -1,3 +1,4 @@
+from datetime import time
 import os
 import subprocess
 import pywhatkit as kit
@@ -33,7 +34,8 @@ def kill_youtube():
         for subproc in subprocess_list:
             if subproc.pid != os.getpid():
                 print("+-- closing subprocess")
+                time.sleep(5)
                 subproc.terminate()
-                os.wait(5)
+                
 
     return "apagado"
