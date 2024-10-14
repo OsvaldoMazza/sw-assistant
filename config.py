@@ -3,40 +3,76 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-## System
-connection_type = "openai" # azure | openai
-wake_up_every_place = True  # True | False  wake up ia in any place of the phrase
+###############################################################################
+### System ###
+# AI Type [azure | openai]
+connection_type = "openai"
+
+# Wakeup in any place of the phrase [True | False]
+wake_up_every_place = True
+
+# Place of Sound File Sound
 system_sound = "assets/system.mp3"
-operate_system = "windows" # windows | linux  
 
-## Language
-language = "spanish"  # Select from languages.jso|
+# Operate System running in program [windows | linux]
+operate_system = "windows"
 
-## OpenaAI
+# Language from language.json
+language = "spanish"
+
+###############################################################################
+### OpenaAI Configuration ####
+# Chat Model ex:"gpt-3.5-turbo"
 chat_model = "gpt-3.5-turbo"
+
+# Enable Functiol Tools [True | False]
 enable_tools = True
+
+# Max Tokens ex: 4096
 max_tokens = 4096
+
+#Max Tokens response: ex 500
 max_response_tokens = 500
 
-## Azure
+###############################################################################
+### Azure ###
+# Azure API version template ex: "2024-02-01"
 azure_api_version = "2024-02-01"
 
-## Hardware
-mic_number_position = 0 # set the microphone position number if you know
-mic_name = "usb"          # set the microphone name if you don't know the position
+###############################################################################
+### Hardware ###
+# Mic position in list of Hardware
+mic_number_position = 0
 
-## Voice Recognition
+# Mic name in the list of Hardware. Put "" mic_number_position to enable by Mic name.
+mic_name = "usb" 
+
+###############################################################################
+### Voice Recognition ###
+# Name of IA to wake up
 wakeup = [
             "ramona",
             "ramón",
             "gallega",
         ]
-attention_time = 7
-phrase_time_limit = 5 
 
-## Voice Assistant
+# Time to be awake without using the wakup word and continue the chat.
+attention_time = 7
+
+# Phrase time limit
+phrase_time_limit = 5
+
+# librery to listener [vosk | speech_recognition ]
+listener_library = 'vosk'
+
+# Vosk Folder
+vosk_folder = "./vosk-model"
+
+###############################################################################
+### Miscelaneus ###
 default_name_mp3 = "temp/voice_temp.mp3"
 default_recognize_wav = "temp/recognize.wav"
 default_velocity_mp3 = 1.6
 
+###############################################################################
 

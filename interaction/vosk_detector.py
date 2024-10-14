@@ -1,10 +1,11 @@
-import ctypes
 import os
 import pyaudio
 import json
 from vosk import Model, KaldiRecognizer
 
-_vosk_folder = "./vosk-model"
+import config
+
+_vosk_folder = config.vosk_folder
 
 class Listen:
     __slots__ = ("model", "p", "rec") 
@@ -23,7 +24,7 @@ class Listen:
         text = None
         print('+-- Say Something ...')
         while True:
-            data = stream.read(4000, exception_on_overflow=False)
+            data = stream.read(16000, exception_on_overflow=False)
             if len(data) == 0:
                 break
 
