@@ -27,12 +27,11 @@ mic_name = "usb"          # set the microphone name if you don't know the positi
 
 ## Voice Recognition
 wakeup = [
-            "southie",
             "ramona",
-            "shazam",
-            "ramón"
+            "ramón",
+            "gallega",
         ]
-attention_time = 30
+attention_time = 7
 phrase_time_limit = 5 
 
 ## Voice Assistant
