@@ -12,7 +12,7 @@ connection_type = "openai"
 wake_up_every_place = True
 
 # Operate System running in program [windows | linux]
-operate_system = "linux"
+operate_system = "windows"
 
 # Browser to open searchs in Linux ex: "chromium" 
 browser = "chromium"
