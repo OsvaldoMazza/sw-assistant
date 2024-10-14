@@ -11,11 +11,11 @@ connection_type = "openai"
 # Wakeup in any place of the phrase [True | False]
 wake_up_every_place = True
 
-# Place of Sound File Sound
-system_sound = "assets/system.mp3"
-
 # Operate System running in program [windows | linux]
-operate_system = "windows"
+operate_system = "linux"
+
+# Browser to open searchs in Linux ex: "chromium" 
+browser = "chromium"
 
 # Language from language.json
 language = "spanish"
@@ -70,8 +70,16 @@ vosk_folder = "./vosk-model"
 
 ###############################################################################
 ### Miscelaneus ###
+# Place of Sound File Sound
+system_sound = "assets/system.mp3"
+
+# MP3 temporally name
 default_name_mp3 = "temp/voice_temp.mp3"
+
+# WAV temporally name
 default_recognize_wav = "temp/recognize.wav"
+
+# Velocity speech IA
 default_velocity_mp3 = 1.6
 
 ###############################################################################

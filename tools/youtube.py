@@ -1,24 +1,26 @@
+import os
 import pywhatkit as kit
 import psutil
-import webbrowser
 
 import config
 
 _operate_system = config.operate_system
-_should_get_url = True if _operate_system != 'linux' else False
+_open_video_now = True if _operate_system != 'linux' else False
+_browser = config.browser
 
 def play_youtube(arguments):
     title = arguments.get('title')
-    url = kit.playonyt(title,False,_should_get_url)
-    if _should_get_url: 
-        webbrowser.open(url, new=0)
+    url = kit.playonyt(title,False,_open_video_now)
+    if not _open_video_now: 
+        print(f"+-- Opening Linux browser: {_browser}")
+        os.system(f"{_browser} {url}")
+    else:
+        print(f"+-- Opening Windows browser: {_browser} ")
 
-    return "reproduciendose video"
+    return "le dí play"
 
 def kill_youtube():
-    browsers = ["chrome", "chromium", "brave", "firefox", "edge"]
-    
+    print(f"+-- Closing browser: {_browser}...")
     for proc in psutil.process_iter():
-        for browser in browsers:
-            if browser in proc.name().lower():
-                proc.kill()
+        if _browser in proc.name().lower():
+            proc.kill()
