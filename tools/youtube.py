@@ -27,6 +27,7 @@ def kill_youtube():
     print(f"+-- Closing browser: {_browser}...")
     time.sleep(1)
     if _open_video_now:
+        time.sleep(6)
         for proc in psutil.process_iter():
             if _browser in proc.name().lower():
                 proc.kill()
