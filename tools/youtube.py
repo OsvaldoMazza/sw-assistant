@@ -1,7 +1,7 @@
 import os
 import subprocess
 import pywhatkit as kit
-import psutil
+import pyautogui
 
 import config
 
@@ -24,6 +24,11 @@ def play_youtube(arguments):
 
 def kill_youtube():
     print(f"+-- Closing browser: {_browser}...")
-    for subproc in subprocess_list:
-        if subproc.pid != os.getpid():
-            subproc.terminate()
+    if _open_video_now:
+        pyautogui.hotkey('ctrl', 'w')
+    else:
+        for subproc in subprocess_list:
+            if subproc.pid != os.getpid():
+                pyautogui.hotkey('ctrl', 'w')
+
+    return "apagado"
