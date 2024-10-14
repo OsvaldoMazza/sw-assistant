@@ -15,7 +15,7 @@ wake_up_every_place = True
 operate_system = "linux"
 
 # Browser to open searchs in Linux ex: "chromium" 
-browser = "firefox"
+browser = "brave"
 
 # Language from language.json
 language = "spanish"
