@@ -16,27 +16,26 @@ def play_youtube(arguments):
     title = arguments.get('title')
     url = kit.playonyt(title,False,_open_video_now)
     if not _open_video_now: 
-        print(f"+-- Opening Linux browser: {_browser}")
-        subprocess_list.append(subprocess.Popen([_browser, f"{url}?autoplay=1"]))
+        print(f"+-- Opening Linux browser: {_browser} ...")
+        url_complete = url_complete + '?autoplay=1'
+        print(f'URL COMPLETE: {url_complete}')
+        subprocess_list.append(subprocess.Popen([_browser, url_complete]))
     else:
-        print(f"+-- Opening Windows browser: {_browser} ")
+        print(f"+-- Opening Windows browser: {_browser} ...")
 
     return "le dí play"
 
 def kill_youtube():
-    print(f"+-- Closing browser: {_browser}...")
-    time.sleep(1)
     if _open_video_now:
-        time.sleep(6)
         for proc in psutil.process_iter():
             if _browser in proc.name().lower():
+                ("+-- closing subprocess ...")
                 proc.kill()
     else:
-        time.sleep(5)
         for subproc in subprocess_list:
             if subproc.pid != os.getpid():
-                print("+-- closing subprocess")
-                time.sleep(5)
+                print("+-- closing subprocess ...")
+                time.sleep(1)
                 subproc.terminate()
                 
 
