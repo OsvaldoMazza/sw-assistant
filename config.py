@@ -23,7 +23,7 @@ language =  os.getenv("language") or "spanish"
 ###############################################################################
 ### OpenaAI Configuration ####
 # Chat Model ex:"gpt-3.5-turbo"
-chat_model = "gpt-3.5-turbo"
+chat_model = "gpt-4o-mini"
 
 # Enable Functiol Tools [True | False]
 enable_tools = True
