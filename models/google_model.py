@@ -1,6 +1,7 @@
 timezone = 'America/Argentina/Buenos_Aires'
 
 class event_calendar:
+    __slots__ = ("summary", "location", "description", "start", "end", "reminders")
     def __init__(self, summary, start_datetime, end_datetime, location=None, description=None, reminder_minutes=60):
         self.summary = summary
         self.location = location

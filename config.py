@@ -66,7 +66,7 @@ phrase_time_limit = 5
 listener_library = 'vosk'
 
 # Vosk Folder
-vosk_folder = "./vosk-model"
+vosk_folder = "./vosk-full"
 
 ###############################################################################
 ### Miscelaneus ###

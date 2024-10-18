@@ -7,13 +7,7 @@ _device_id = os.getenv('tuya_iot_id')
 _device_local_key = os.getenv('tuya_iot_local_key')
 
 class Device:
-    def __init__(self, device_id, address=None, local_key=None, data=None):
-        self.id = device_id
-        self.address = address
-        self.local_key = local_key
-        self.data = data
-
-class Device:
+    __slots__ = ("id", "address", "local_key", "data")
     def __init__(self, device_id, address, local_key, data=None):
         self.id = device_id
         self.address = address

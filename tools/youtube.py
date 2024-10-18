@@ -1,5 +1,3 @@
-import time
-import os
 import subprocess
 import pywhatkit as kit
 import psutil
