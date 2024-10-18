@@ -32,14 +32,21 @@ def kill_youtube():
                 ("+-- closing subprocess ...")
                 proc.kill()
     else:
-        for subproc in subprocess_list:
-            if subproc.pid != os.getpid():
-                print(f"+-- closing subprocess: {subproc.pid} ... ")
-                time.sleep(1)
-                subproc.terminate()
-                # print("-- Kill procedure --")
-                # os.open(f"kill -9 {subproc.pid}")
-
+        kill_browser_processes()
         subprocess_list.clear()        
 
     return "apagado"
+
+def kill_browser_processes():
+    result = subprocess.run(['ps', 'aux'], stdout=subprocess.PIPE)
+    processes = result.stdout.decode('utf-8').splitlines()
+
+    for process in processes:
+        if _browser in process:
+            try:
+                # Extrae el PID (segundo elemento en la línea)
+                pid = int(process.split()[1])
+                print(f"Eliminando proceso con PID: {pid}")
+                subprocess.run(['kill', '-9', str(pid)])  # Mata el proceso
+            except Exception as e:
+                print(f"Error al eliminar proceso: {e}")
