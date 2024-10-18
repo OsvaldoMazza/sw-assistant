@@ -18,6 +18,29 @@
             "la luuuz",
             "la lus"
         ],
+        "volume_up": [
+            "subi el volumen",
+            "subí el volumen",
+            "sube el volumen"
+        ],
+        "volume_down": [
+            "bajá el volumen",
+            "baja el volumen",
+            "bajar volumen"
+        ],
+        "silent": [
+            "silencio por favor"
+        ],
+        "loud": [
+            "volumen al máximo",
+            "volumen al maximo"
+        ],
+        "emergency_silence": [
+            "silencio por favor",
+            "apaga todo",
+            "apagar todo",
+            "apagá todo"
+        ],
         "stop_talking": [
             "basta",
             "listo",
@@ -35,18 +58,38 @@
             "hi",
             "hey"
         ],
-        "close": [
-            "I want you to switch off",
-            "terminate assistant",
-            "abort wizard"
-        ],
         "light_house": [
             "the light"
+        ],
+        "volume_up": [
+            "volume up",
+            "more louder"
+        ],
+        "volume_down": [
+            "bvolume down",
+            "more quiet"
+        ],
+        "silent": [
+            "silent please"
+        ],
+        "loud": [
+            "maximum volume",
+            "louder volume"
         ],
         "stop_talking": [
             "stop",
             "alright",
             "enough"
+        ],
+        "emergency_silence": [
+            "silent please",
+            "shut down everything",
+            "please stop all"
+        ],
+        "close": [
+            "I want you to switch off",
+            "terminate assistant",
+            "abort wizard"
         ],
         "not_understand": "I didn't understand, can you ask again?",
         "goodbye": "I'm leaving, goodbye!",

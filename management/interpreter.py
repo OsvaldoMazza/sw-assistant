@@ -4,7 +4,8 @@ from models.interpreting import Interpreting
 from interaction.speaker import text_to_voice
 from management.utils import get_lang_value, play_mp3
 from tools.tuya_home import switch_device
-
+from management.volume import control_volume
+from tools.youtube import kill_youtube
 
 _attention_time = config.attention_time
 _system_mp3 = config.system_sound
@@ -25,6 +26,24 @@ def interpreter(text):
     elif text in get_lang_value('light_house'): 
         light_house()
         return interpreting('False', False,False)
+
+    elif text in get_lang_value('volume_up'): 
+        control_volume('up')
+        return interpreting('False', False,False)
+    elif text in get_lang_value('volume_down'): 
+        control_volume('down')
+        return interpreting('False', False,False)
+    elif text in get_lang_value('silent'): 
+        control_volume('mute')
+        return interpreting('False', False,False)
+    elif text in get_lang_value('loud'): 
+        control_volume('max')
+        return interpreting('False', False,False)
+    
+    elif text in get_lang_value('emergency_silence'):
+        emergency_silent()
+        return interpreting('False', False,False)
+    
     elif text in get_lang_value('close'): close_program()
     else: do_nothing()
 
@@ -40,6 +59,10 @@ def do_nothing():
 def light_house():
     play_mp3(_system_mp3)
     switch_device()
+
+def emergency_silent():
+    control_volume('mute') 
+    kill_youtube()
 
 def close_program():
     text_to_voice(get_lang_value('goodbye'))

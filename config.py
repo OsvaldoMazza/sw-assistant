@@ -57,7 +57,7 @@ wakeup = [
         ]
 
 # Time to be awake without using the wakup word and continue the chat.
-attention_time = 7
+attention_time = 15
 
 # Phrase time limit
 phrase_time_limit = 5

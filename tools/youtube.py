@@ -34,9 +34,12 @@ def kill_youtube():
     else:
         for subproc in subprocess_list:
             if subproc.pid != os.getpid():
-                print("+-- closing subprocess ...")
+                print(f"+-- closing subprocess: {subproc.pid} ... ")
                 time.sleep(1)
                 subproc.terminate()
+                print("-- Kill procedure --")
+                os.open(f"kill -9 {subproc.pid}")
+
         subprocess_list.clear()        
 
     return "apagado"
