@@ -9,31 +9,35 @@ import config
 _operate_system = config.operate_system
 _open_video_now = True if _operate_system != 'linux' else False
 _browser = config.browser
+_current_browser = 'brave' if 'brave' in _browser else _browser
 
 subprocess_list = []
 
 def play_youtube(arguments):
     title = arguments.get('title')
-    url = kit.playonyt(title,False,_open_video_now)
-    if not _open_video_now: 
+    url = kit.playonyt(title,False,False)
+    url_complete = url + '?autoplay=1'
+    if _operate_system == 'linux': 
         print(f"+-- Opening Linux browser: {_browser} ...")
-        url_complete = url + '?autoplay=1'
-        print(f'URL COMPLETE: {url_complete}')
         subprocess_list.append(subprocess.Popen([_browser, url_complete]))
     else:
         print(f"+-- Opening Windows browser: {_browser} ...")
+        subprocess_list.append(subprocess.run(["start", _browser, url_complete], shell=True))
 
     return "le dí play"
 
 def kill_youtube():
-    if _open_video_now:
-        for proc in psutil.process_iter():
-            if _browser in proc.name().lower():
-                ("+-- closing subprocess ...")
-                proc.kill()
-    else:
-        kill_browser_processes()
-        subprocess_list.clear()        
+    try:
+        if _open_video_now:
+            for proc in psutil.process_iter():
+                if _current_browser in proc.name().lower():
+                    ("+-- closing subprocess ...")
+                    proc.kill()
+        else:
+            kill_browser_processes()
+            subprocess_list.clear()
+    except Exception as e:
+        print('')
 
     return "apagado"
 
@@ -42,7 +46,7 @@ def kill_browser_processes():
     processes = result.stdout.decode('utf-8').splitlines()
 
     for process in processes:
-        if _browser in process:
+        if _current_browser in process:
             try:
                 # Extrae el PID (segundo elemento en la línea)
                 pid = int(process.split()[1])

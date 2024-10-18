@@ -21,22 +21,27 @@
         "volume_up": [
             "subi el volumen",
             "subí el volumen",
-            "sube el volumen"
+            "sube el volumen",
+            "subí la musica",
+            "sube la musica"
+            
         ],
         "volume_down": [
             "bajá el volumen",
             "baja el volumen",
-            "bajar volumen"
+            "bajar volumen",
+            "baja la musica",
+            "bajá la musica"
         ],
         "silent": [
             "silencio por favor"
         ],
         "loud": [
             "volumen al máximo",
-            "volumen al maximo"
+            "volumen al maximo",
+            "poné la musica al palo"
         ],
         "emergency_silence": [
-            "silencio por favor",
             "apaga todo",
             "apagar todo",
             "apagá todo"

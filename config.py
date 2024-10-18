@@ -6,19 +6,19 @@ load_dotenv()
 ###############################################################################
 ### System ###
 # AI Type [azure | openai]
-connection_type = "openai"
+connection_type = os.getenv("connection_type") or "openai"
 
 # Wakeup in any place of the phrase [True | False]
-wake_up_every_place = True
+wake_up_every_place =  os.getenv("wake_up_every_place") or True
 
 # Operate System running in program [windows | linux]
-operate_system = "linux"
+operate_system = os.getenv("operate_system") or "linux"
 
 # Browser to open searchs in Linux ex: "chromium" 
-browser = "chromium"
+browser =  os.getenv("browser") or "chrome"
 
 # Language from language.json
-language = "spanish"
+language =  os.getenv("language") or "spanish"
 
 ###############################################################################
 ### OpenaAI Configuration ####
